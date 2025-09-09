@@ -105,7 +105,6 @@ namespace Global360Test._pages
                 var name = match.Groups[1].Value;     // "Anderson Luciano"
                 var username = match.Groups[2].Value; // "savanna.schumm"
                 var userId = match.Groups[3].Value;   // "3989"
-                Console.WriteLine($"Name: {name}, Username: {username}, UserID: {userId}");
                 return name;
             }
             return "";
