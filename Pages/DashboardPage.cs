@@ -11,17 +11,11 @@ namespace Global360Test.Pages
     internal class DashboardPage
     {
         private readonly IPage _page;
-        private readonly ILocator _username;
-        private readonly ILocator _password;
-        private readonly ILocator _btnLogin;
         public Navbar navbar;
 
         public DashboardPage(IPage page)
         {
             _page = page;
-            _username = page.Locator("#username");
-            _password = page.Locator("#password");
-            _btnLogin = page.Locator("#submit");
             navbar = new Navbar(page);
         }
 
