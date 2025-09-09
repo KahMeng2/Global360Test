@@ -13,7 +13,7 @@ namespace Global360Test
     {
      
         [Test]
-        public async Task Test1()
+        public async Task CreateAssetAndValidateDetailsAndHistory()
         {
             LoginPage loginPage = new LoginPage(Page);
             DashboardPage dashboardPage = new DashboardPage(Page);
@@ -46,11 +46,6 @@ namespace Global360Test
             // Navigate to history and verify asset details
             await assetPage.GoToHistory();
             await assetPage.verifyHistory(asset);
-
-
-
-
-
 
         }
     }
