@@ -1,4 +1,5 @@
 using Global360Test.Pages;
+using Global360Test.Pages.Sections;
 using Microsoft.Playwright;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -13,24 +14,30 @@ namespace Global360Test
         public async Task Test1()
         {
             LoginPage loginPage = new LoginPage(Page);
+            DashboardPage dashboardPage = new DashboardPage(Page);
 
             // Login 
             await loginPage.GoTo();
             await loginPage.Login("admin", "password");
             await Page.WaitForURLAsync("**/");
 
+            // Navigate through Dashboard to create asset
+            await dashboardPage.navbar.Create(NavbarItems.Asset);
+
+            //// TODO: implement a dashboard page, that uses a navbar component. -> video
+            //await Page.ClickAsync("text=Create New");
+
+            //// Wait for dropdown and click Asset
+            //await Page.WaitForSelectorAsync(".dropdown-menu", new() { State = WaitForSelectorState.Visible });
+            //await Page.WaitForSelectorAsync("a[href*='/hardware/create']", new() { State = WaitForSelectorState.Visible });
+
+            //await Page.ClickAsync("a[href*='/hardware/create']");
+
+            //// Verify we're on the create asset page
+            //await Page.WaitForURLAsync("**/hardware/create");
+
             // Asset creation - long block with hardcoded values
-            // Navigate through UI to create asset
-            await Page.ClickAsync("text=Create New");
-
-            // Wait for dropdown and click Asset
-            await Page.WaitForSelectorAsync(".dropdown-menu", new() { State = WaitForSelectorState.Visible });
-            await Page.WaitForSelectorAsync("a[href*='/hardware/create']", new() { State = WaitForSelectorState.Visible });
-
-            await Page.ClickAsync("a[href*='/hardware/create']");
-
-            // Verify we're on the create asset page
-            await Page.WaitForURLAsync("**/hardware/create");
+            
 
             // TODO: Build asset model and go from there
             // Obtain asset tag from the page 
