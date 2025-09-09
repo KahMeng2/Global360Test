@@ -67,7 +67,6 @@ namespace Global360Test.Pages
 
         public async Task verifyHistory(Asset asset)
         {
-            // Check 
             ILocator _userLink = _page.Locator("tr[data-index='1'] td:nth-child(6) a");
             string checkoutTo = await _userLink.TextContentAsync();
             checkoutTo = checkoutTo.Trim();

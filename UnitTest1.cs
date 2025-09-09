@@ -29,7 +29,6 @@ namespace Global360Test
             // Navigate through Dashboard to create asset
             await dashboardPage.navbar.Create(NavbarItems.Asset);
 
-            // TODO: Build asset model and go from there
             // Obtain asset tag from the page 
             Asset asset = new Asset(assetStatus.Ready_to_Deploy, "random", "Macbook Pro 13\"");
 
