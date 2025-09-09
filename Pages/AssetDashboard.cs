@@ -35,18 +35,15 @@ namespace Global360Test.Pages
             
             // Click on the asset tag link to navigate to asset details
             var assetLink = _page.Locator($"td a:has-text('{assetTag}')");
+            // Wait for the search results to load
+            await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
 
-            // Check if asset exists
             var count = await assetLink.CountAsync();
-            if (count == 0)
-            {
-                throw new AssertionException($"Asset with tag '{assetTag}' was not found in search results");
-            }
+            Assert.That(count, Is.GreaterThan(0), $"Asset with tag '{assetTag}' was not found in search results");
 
             await assetLink.ClickAsync();
 
-            // Wait for the search results to load
-            await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
+            
         }
     }
 }
